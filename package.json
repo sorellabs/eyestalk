@@ -1,0 +1,18 @@
+{ "author"      : "Quildreen Motta <quildreen@gmail.com> (http://killdream.github.com/)"
+, "name"        : "eyestalk"
+, "description" : "Eventful observables for your JavaScript."
+, "version"     : "0.1.0"
+, "main"        : "./src/index.js"
+
+, "repository"  : { "type" : "git"
+                  , "url"  : "git://github.com/killdream/eyestalk" }
+
+, "engines"              : {}
+, "dependencies"         : { "ekho": "0.1.x" }
+, "devDependencies"      : { "mocha"      : "*"
+                           , "noire"      : "*"
+                           , "browserify" : "*"
+                           , "sinon"      : "*"
+                           }
+, "optionalDependencies" : {}
+}
