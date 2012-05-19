@@ -22,6 +22,30 @@ describe('{} Observable', function() {
     })
   })
 
+  describe('λ update', function() {
+    it('Should import the key/value pairs from one dictionary into the object.', function() {
+      o.update({ a: 1, b: 2, c: 3 })
+      ensure(o.at('a')).same(1)
+      ensure(o.at('b')).same(2)
+      ensure(o.at('c')).same(3)
+    })
+    it('Should fire a `put` event for each key/value pair.', function() {
+      o.on('put', stub)
+      o.update({ a: 1, b: 2, c: 3 })
+      ensure(stub).property('callCount').same(3)
+      ensure(stub.args[0].slice(1)).equals(['a', 1])
+      ensure(stub.args[1].slice(1)).equals(['b', 2])
+      ensure(stub.args[2].slice(1)).equals(['c', 3])
+    })
+    it('Should trigger an `update` event after updating.', function() {
+      var x = { a: 1, b: 2, c: 3 }
+      o.on('update', stub)
+      o.update(x)
+      ensure(stub).property('callCount').same(1)
+      ensure(stub.args[0][1]).same(x)
+    })
+  })
+
   describe('λ remove', function() {
     it('Should remove a key/value pair.', function() {
       o.put('foo', 'bar')

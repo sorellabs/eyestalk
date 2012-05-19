@@ -38,6 +38,12 @@ var Observable = Eventful.derive({
     this.trigger('put', key, value)
     return this }
 
+, update:
+  function _update(dictionary) {
+    keys(dictionary).forEach(function(key){ this.put(key, dictionary[key]) }.bind(this))
+    this.trigger('update', dictionary)
+    return this }
+
 , remove:
   function _remove(key, value) {
     if (this.has_key_p(key)) {
